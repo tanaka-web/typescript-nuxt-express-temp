@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import prisma from '../../../prisma/client'
-import { HogeRepository } from "../../../infrastructure/prisma/hoge";
+import { HogeRepository } from '../../../infrastructure/prisma/hoge'
 
 export const getHoge = async (req: Request, res: Response) => {
   const functionName = getHoge.name

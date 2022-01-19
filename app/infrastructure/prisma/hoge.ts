@@ -8,6 +8,7 @@ export class HogeRepository implements IHogeRepository {
 
   readonly findMany = async (params: findManyParams): Promise<{ hoges?: Hoge[] }> => {
     const rows = await this.prisma.hoge.findMany({})
+    console.log(params)
 
     if (rows == null) {
       throw new Error('hoges is null')

@@ -1,4 +1,4 @@
-import { Hoge, HogeID } from './hoge'
+import { Hoge } from './hoge'
 
 export type findManyParams = {
   hoge?: string

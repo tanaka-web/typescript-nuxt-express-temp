@@ -12,6 +12,6 @@ export class Hoge {
     public readonly id: HogeID,
     public readonly createdAt: Date,
     public readonly updatedAt: Date,
-    public readonly title: string,
+    public readonly title: string
   ) {}
 }

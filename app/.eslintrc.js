@@ -21,7 +21,7 @@ module.exports = {
       }
     },
     {
-      files: ['api/controller/*.ts'],
+      files: ['server/controller/**/*.ts', 'infrastructure/**/*.ts'],
       rules: {
         'no-console': 0
       }
