@@ -1,0 +1,54 @@
+version: "3"
+services:
+  db:
+    image: mysql/mysql-server:8.0
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password --sql-mode=NO_ENGINE_SUBSTITUTION
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/data/msql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    networks:
+      - app-network
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: miniosecret
+    command: ['server', '/data', '--console-address', ':9001']
+    volumes:
+      - ./minio/data:/data
+      - ./minio/config:/root/.minio
+      - ./minio/policies:/policies
+    networks:
+      - app-network
+  mapp:
+    container_name: app
+    build:
+      context: ./nodejs
+    volumes:
+      - ../app:/srv/app
+    command: bash -c "yarn install && yarn dev"
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
+  minio:
+    driver: local
