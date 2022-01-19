@@ -71,7 +71,7 @@ export default {
       // TODO 上記諸々envファイル化
       // https://github.com/expressjs/session
     }),
-    '~/../api'
+    '~/../server'
   ],
 
   server: {
