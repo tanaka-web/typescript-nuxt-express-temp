@@ -1,3 +1,9 @@
+import { json, urlencoded } from 'express'
+import session from 'express-session'
+import memorystore from 'memorystore'
+
+const MemoryStore = memorystore(session)
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
