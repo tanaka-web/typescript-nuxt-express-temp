@@ -1,8 +1,8 @@
 # app
 
-## Build Setup
+## Build Setup (development)
 
-```bash
+```zsh
 # install dependencies
 $ yarn install
 
@@ -16,6 +16,32 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+
+```zsh
+# launch environment for develop
+# localhost:3001 
+$ cd docker
+$ docker-compose up
+```
+
+```zsh
+# create db schema
+$ npx prisma db pull
+$ npx prisma generate
+```
+
+
+## code formatting
+```bash
+$ cd app
+
+## check lint
+$ yarn lint
+
+## auto fix lint
+$ yarn lint:fix
+```
+
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
